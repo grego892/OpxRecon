@@ -5,9 +5,9 @@ using OpxRecon.Data;
 using Serilog;
 using Microsoft.EntityFrameworkCore;
 
-namespace OpxRecon.Components.Pages
+namespace OpxRecon.Components.Pages.Setup
 {
-    public partial class Setup
+    public partial class RecipientSetup
     {
         [Inject]
         private ApplicationDbContext DbContext { get; set; }

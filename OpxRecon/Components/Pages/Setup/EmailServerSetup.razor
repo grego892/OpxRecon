@@ -1,0 +1,47 @@
+﻿@page "/emailserversetup"
+
+<PageTitle>Email Server Setup</PageTitle>
+
+<MudGrid>
+    <MudItem xs="12" sm="12" md="12">
+        <MudPaper Class="d-flex align-center justify-center py-8">
+            <MudCard Outlined=true Class="ma-8" Elevation="9">
+                <MudCardContent>
+                    <MudText>Email Server Settings</MudText>
+                    <MudTable Items="@emailServerSettingsList"
+                              ReadOnly=false
+                              Dense=true
+                              Bordered=true
+                              Class="border-solid">
+                        <HeaderContent>
+                            <MudTh>SMTP Server</MudTh>
+                            <MudTh>Port</MudTh>
+                            <MudTh>Username</MudTh>
+                            <MudTh>Use SSL</MudTh>
+                            <MudTh />
+                        </HeaderContent>
+                        <RowTemplate Context="context">
+                            <MudTd DataLabel="SmtpServer">@context.SmtpServer</MudTd>
+                            <MudTd DataLabel="Port">@context.Port</MudTd>
+                            <MudTd DataLabel="Username">@context.Username</MudTd>
+                            <MudTd DataLabel="UseSsl">@context.UseSsl</MudTd>
+                            <MudTd>
+                                <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(()=>RemoveEmailServerSettingsAsync(context))">Delete</MudButton>
+                            </MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudTextField @bind-Value="newEmailServerSettings.SmtpServer" Label="SMTP Server" Variant="Variant.Outlined"></MudTextField>
+                    <MudTextField @bind-Value="newEmailServerSettings.Port" Label="Port" Variant="Variant.Outlined" Type="number"></MudTextField>
+                    <MudTextField @bind-Value="newEmailServerSettings.Username" Label="Username" Variant="Variant.Outlined"></MudTextField>
+                    <MudTextField @bind-Value="newEmailServerSettings.Password" Label="Password" Variant="Variant.Outlined" InputType="InputType.Password"></MudTextField>
+                    <MudCheckBox @bind-Checked="newEmailServerSettings.UseSsl" Label="Use SSL" T="bool"></MudCheckBox>
+                    <MudButton Class="ma-1" Variant="Variant.Outlined" Color="Color.Primary" OnClick="AddEmailServerSettingsAsync">Add Email Server</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+<MudButton Class="ma-8" Href="\debug" Variant="Variant.Outlined" Color="Color.Secondary">Debug</MudButton>

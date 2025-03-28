@@ -4,9 +4,15 @@
 
 <MudNavMenu>
     <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-    <MudNavLink Href="setup" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Settings">Setup</MudNavLink>
+    <MudNavLink Href="reconlogs" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.FileOpen">ReconLogs</MudNavLink>
 
 
+
+    
+    <MudNavGroup Title="Setup" Expanded="false">
+        <MudNavLink Href="recipientSetup" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Receipt">Recipient Setup</MudNavLink>
+        <MudNavLink Href="emailServerSetup" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Email">Email Server Setup</MudNavLink>
+    </MudNavGroup>
 </MudNavMenu>
 
 
