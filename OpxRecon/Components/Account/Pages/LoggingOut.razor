@@ -1,0 +1,13 @@
+﻿@page "/Account/Loggingout"
+@using OpxRecon.Data
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject NavigationManager NavigationManager
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await SignInManager.SignOutAsync();
+        NavigationManager.NavigateTo("/", true);
+    }
+}

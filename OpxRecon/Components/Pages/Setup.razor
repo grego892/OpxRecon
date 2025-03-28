@@ -1,0 +1,93 @@
+﻿@page "/setup"
+
+<PageTitle>Setup - Audionix Router</PageTitle>
+
+<MudGrid>
+    <MudItem xs="12" sm="12" md="6">
+        <MudPaper Class="d-flex align-center justify-center py-8">
+            <MudCard Outlined=true Class="ma-8" Elevation="9">
+                <MudCardContent>
+                    <MudText>Stations</MudText>
+                    <MudTable Items="@stations.OrderBy(s => s.StationSortOrder)"
+                                ReadOnly=false
+                                Dense=true
+                                Bordered=true
+                                Class="border-solid">
+                        <HeaderContent>
+                            <MudTh>Call Letters</MudTh>
+                            <MudTh />
+                            <MudTh />
+                        </HeaderContent>
+                        <RowTemplate Context="context">
+                                <MudTd DataLabel="CallLetters">@context.CallLetters</MudTd>
+                                <MudTd>
+                                    <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(()=>RemoveStationAsync(context))">Delete</MudButton>
+                                </MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudTextField @bind-Value="newStation.CallLetters" Label="Call Letters" Variant="Variant.Outlined"></MudTextField>
+                    <MudButton Class="ma-1" Variant="Variant.Outlined" Color="Color.Primary" OnClick="AddStationAsync">Add Station</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudPaper>
+    </MudItem>
+
+
+
+
+
+    <MudItem xs="12" sm="12" md="6">
+        <MudPaper Class="d-flex align-center justify-center py-8">
+            <MudCard Outlined=true Class="ma-8" Elevation="9">
+                <MudCardContent>
+                    <MudText>Stations</MudText>
+                    <MudTable Items="recipients"
+                              ReadOnly=false
+                              Dense=true
+                              Bordered=true
+                              Class="border-solid">
+                        <HeaderContent>
+                            <MudTh>Name</MudTh>
+                            <MudTh>Email Address</MudTh>
+                            <MudTh />
+                            <MudTh />
+                        </HeaderContent>
+                        <RowTemplate Context="context">
+                            <MudTd DataLabel="Name">@context.Name</MudTd>
+                            <MudTd DataLabel="CallLetters">@context.EmailAddress</MudTd>
+                            <MudTd>
+                                <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(()=>RemoveRecipientAsync(context))">Delete</MudButton>
+                            </MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudTextField @bind-Value="newRecipient.Name" Label="Name" Variant="Variant.Outlined"></MudTextField>
+                    <MudTextField @bind-Value="newRecipient.EmailAddress" Label="Email Address" Variant="Variant.Outlined"></MudTextField>
+                    <MudButton Class="ma-1" Variant="Variant.Outlined" Color="Color.Primary" OnClick="AddRecipientAsync">Add Recipient</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudPaper>
+    </MudItem>
+
+
+
+
+
+
+
+    <MudItem xs="12" sm="12" md="6">
+        <MudPaper Class="d-flex align-center justify-center ">
+            <MudCard Outlined=true Class="pa-4 ma-4" Elevation="9">
+                <MudTimePicker Label="Time to run:" AmPm="false" @bind-Time="_time" />
+            </MudCard>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="10">
+
+    </MudItem>
+</MudGrid>
+
+<MudButton Class="ma-8" Href="\debug" Variant="Variant.Outlined" Color="Color.Secondary">Debug</MudButton>

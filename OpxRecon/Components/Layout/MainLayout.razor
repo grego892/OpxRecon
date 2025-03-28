@@ -1,0 +1,40 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider @ref="@_mudThemeProvider" Theme="OpxReconTheme" @bind-IsDarkMode="@_isDarkMode" />
+<MudSnackbarProvider />
+<MudDialogProvider />
+<MudPopoverProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
+        <MudImage Src="Images/AudionixLogo.png" Width="65" Height="60" />
+        <MudText Class="pa-2 ma-2 pl-5 ml-n3" Typo="Typo.h4">OpX Recon</MudText>
+        <MudSpacer />
+        <MudSpacer />
+        <MudText Class="pa-2 ma-2 border-solid border-2">userName</MudText>
+        <MudSwitch Class="mr-n2" @bind-Value="_isDarkMode" ThumbIcon="@(_isDarkMode==true ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)" ThumbIconColor="@(_isDarkMode==true ? Color.Success : Color.Error)" />
+        <MudIconButton Class="ml-n2" Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" OnClick="ShowAboutSnackbar" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavMenu />
+        <MudSpacer />
+
+
+
+    <StreamMonitor />
+    <MudNavLink Class="pa-2" Icon="@Icons.Material.Filled.AccountCircle">
+        Login
+    </MudNavLink>
+    </MudDrawer>
+    <MudMainContent Class="mt-16 pa-4">
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>
